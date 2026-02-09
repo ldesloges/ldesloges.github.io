@@ -1,46 +1,70 @@
-<main class="container">
-    <div class="projects-list">
-        
-        <article class="project-block">
-            <div class="project-image">
-                <img src="img/capture-site.jpg" alt="Capture d'écran du projet">
-            </div>
-            <div class="project-info">
-                <span class="project-category">Développement Web</span>
-                <h3>Mon Portfolio ISAE-SUPAERO</h3>
-                <p>
-                    Conception complète d'un site CV statique pour présenter mon parcours académique. 
-                    J'ai utilisé une approche <strong>mobile-first</strong> et optimisé les performances pour un chargement instantané via GitHub Pages.
-                    Ce projet m'a permis de maîtriser l'automatisation avec <strong>Makefiles</strong> et la gestion de version avec Git.
-                </p>
-                <div class="project-tags">
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>Git</span>
-                </div>
-                <a href="https://github.com/ldesloges/ldesloges.github.io" class="project-link" target="_blank">Voir le code source →</a>
-            </div>
-        </article>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets | Leny Desloges</title>
+    <link rel="stylesheet" href="include/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-        <article class="project-block">
-            <div class="project-image">
-                <img src="img/projet-c.jpg" alt="Code en C">
-            </div>
-            <div class="project-info">
-                <span class="project-category">Système / C</span>
-                <h3>Optimisation d'Algorithmes</h3>
-                <p>
-                    Développement d'un outil de traitement de données en C. L'objectif était de réduire la complexité temporelle 
-                    d'une fonction de tri spécifique utilisée dans un contexte de simulation aéronautique.
-                    Le code respecte les normes de sécurité logicielle apprises à l'école.
-                </p>
-                <div class="project-tags">
-                    <span>Langage C</span>
-                    <span>Algorithmique</span>
-                </div>
-                <a href="#" class="project-link" target="_blank">Consulter le Repo GitHub →</a>
-            </div>
-        </article>
+    <header>
+        <div class="container">
+            <h1>Mes Réalisations</h1>
+            <nav>
+                <a href="index.html">← Retour au CV</a>
+                <a href="https://github.com/ldesloges" target="_blank">Mon GitHub</a>
+            </nav>
+        </div>
+    </header>
 
-    </div>
-</main>
+    <main class="container">
+        <div class="projects-grid">
+            
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Simulateur Ligue1</h3>
+                    <p>Description courte du projet. Explique quel problème tu as résolu ou ce que l'outil fait concrètement.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Shell</span>
+                    </div>
+                    <a href="#" class="project-link">Voir le code →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Nom du Projet 2</h3>
+                    <p>Un autre projet incroyable réalisé pendant tes études ou ton temps libre.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>API</span>
+                    </div>
+                    <a href="#" class="project-link">Voir le code →</a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Site Portfolio</h3>
+                    <p>Ce site même ! Développé en HTML/CSS pur et déployé via GitHub Pages.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Makefile</span>
+                    </div>
+                    <a href="https://github.com/ldesloges/ldesloges.github.io" class="project-link">Voir le repo →</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Leny Desloges</p>
+    </footer>
+
+</body>
+</html>
