@@ -1,70 +1,155 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Projets | Leny Desloges</title>
-    <link rel="stylesheet" href="include/projects.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+/* --- CONFIGURATION DES COULEURS --- */
+:root {
+    --bg-color: #05070a;        /* Noir profond */
+    --card-bg: #111827;         /* Gris bleuté sombre */
+    --accent: #6366f1;          /* Indigo vibrant */
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --text-main: #f8fafc;       /* Blanc cassé */
+    --text-dim: #94a3b8;        /* Gris clair */
+    --border: #1e293b;          /* Bordure discrète */
+}
 
-    <header>
-        <div class="container">
-            <h1>Mes Réalisations</h1>
-            <nav>
-                <a href="index.html">← Retour au CV</a>
-                <a href="https://github.com/ldesloges" target="_blank">Mon GitHub</a>
-            </nav>
-        </div>
-    </header>
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <main class="container">
-        <div class="projects-grid">
-            
-            <article class="project-card">
-                <div class="project-content">
-                    <h3>Nom du Projet 1</h3>
-                    <p>Description courte du projet. Explique quel problème tu as résolu ou ce que l'outil fait concrètement.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>Shell</span>
-                    </div>
-                    <a href="#" class="project-link">Voir le code →</a>
-                </div>
-            </article>
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-            <article class="project-card">
-                <div class="project-content">
-                    <h3>Nom du Projet 2</h3>
-                    <p>Un autre projet incroyable réalisé pendant tes études ou ton temps libre.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>API</span>
-                    </div>
-                    <a href="#" class="project-link">Voir le code →</a>
-                </div>
-            </article>
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-            <article class="project-card">
-                <div class="project-content">
-                    <h3>Site Portfolio</h3>
-                    <p>Ce site même ! Développé en HTML/CSS pur et déployé via GitHub Pages.</p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Makefile</span>
-                    </div>
-                    <a href="https://github.com/ldesloges/ldesloges.github.io" class="project-link">Voir le repo →</a>
-                </div>
-            </article>
+/* --- HEADER --- */
+header {
+    padding: 80px 0 40px;
+    text-align: center;
+    background: radial-gradient(circle at top, #1e1b4b 0%, transparent 70%);
+}
 
-        </div>
-    </main>
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    <footer>
-        <p>&copy; 2026 Leny Desloges</p>
-    </footer>
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
 
-</body>
-</html>
+nav a:hover {
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* --- GRID DES PROJETS --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-content {
+    padding: 30px;
+}
+
+.project-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.project-content p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    min-height: 60px;
+}
+
+/* --- TAGS & LINKS --- */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.project-tags span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.project-link {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: gap 0.2s;
+}
+
+.project-link:hover {
+    color: var(--accent);
+    gap: 8px; /* Petit effet de mouvement sur la flèche */
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 50px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+}
