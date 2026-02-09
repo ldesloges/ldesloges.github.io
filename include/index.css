@@ -260,3 +260,31 @@ body {
         linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
 }
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--card-bg);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Caché par défaut */
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-top:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+#back-to-top i {
+    font-size: 1.2rem;
+}
