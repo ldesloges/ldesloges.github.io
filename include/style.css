@@ -1,0 +1,104 @@
+:root {
+    --primary: #2563eb;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --text: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--dark);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.btn-download {
+    background: var(--primary);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+section {
+    margin: 40px 0;
+}
+
+h2 {
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.card {
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #64748b;
+    display: block;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: var(--light);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #e2e8f0;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Responsive pour mobiles */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    nav a { display: block; margin: 10px 0; }
+}
