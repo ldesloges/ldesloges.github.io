@@ -127,6 +127,16 @@ h2::after {
     transition: 0.3s;
 }
 
+.card {
+    background: rgba(17, 24, 39, 0.7); /* Transparence */
+    backdrop-filter: blur(10px); /* Flou d'arrière-plan */
+    border: 1px solid rgba(99, 102, 241, 0.2); /* Bordure subtile */
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); /* Halo indigo au survol */
+}
+
 .card:hover { border-color: var(--accent); }
 
 /* --- STYLE LOGOS EXP --- */
@@ -232,4 +242,21 @@ footer {
 @media (max-width: 600px) {
     .experience-item { flex-direction: column; }
     h1 { font-size: 2.5rem; }
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent);
+    z-index: 9999;
+}
+
+body {
+    background-image: 
+        linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
 }

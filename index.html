@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    <div id="scroll-progress"></div>
     <header>
       <div class="container">
         <div class="profile-pic">
@@ -38,7 +39,10 @@
       <section id="about">
         <h2>À propos</h2>
         <p>
-          Futur ingénieur passionné par la convergence entre la mécanique et la Data Science. De la simulation de championnats (Monte Carlo) à la conception de sites web, j'aime transformer la donnée en outils décisionnels élégants.
+          Futur ingénieur passionné par la convergence entre la mécanique et la
+          Data Science. De la simulation de championnats (Monte Carlo) à la
+          conception de sites web, j'aime transformer la donnée en outils
+          décisionnels élégants.
         </p>
       </section>
 
@@ -118,7 +122,9 @@
           <div class="skill-group">
             <h3><i class="fas fa-code"></i> Programmation & Data</h3>
             <div class="skills-grid">
-              <span class="tag">Python (Pandas, Scikit-learn, Numpy, Matplotlip)</span>
+              <span class="tag"
+                >Python (Pandas, Scikit-learn, Numpy, Matplotlip)</span
+              >
               <span class="tag">C, JAVA</span>
               <span class="tag">SQL</span>
               <span class="tag">MATLAB</span>
@@ -149,5 +155,16 @@
     <footer>
       <p>&copy; 2026 Leny Desloges - Codé avec passion</p>
     </footer>
+    <script>
+      window.onscroll = function () {
+        let winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        let height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      };
+    </script>
   </body>
 </html>

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mes Projets | Lény Desloges</title>
     <link rel="stylesheet" href="include/projects.css" />
-    <link rel="icon" type="image/png" href="include/faviccon.ico">
+    <link rel="icon" type="image/png" href="include/faviccon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <div id="scroll-progress"></div>
     <header>
       <div class="container">
         <h1>Mes Projets</h1>
@@ -108,10 +109,7 @@
               <span>Folium / Geopandas</span>
               <span>Data Cleaning</span>
             </div>
-            <a
-              href="carte_Paris.html"
-              class="project-link"
-              target="_blank"
+            <a href="carte_Paris.html" class="project-link" target="_blank"
               >Explorer la carte →</a
             >
           </div>
@@ -151,5 +149,16 @@
     <footer>
       <p>&copy; 2026 Leny Desloges - ISAE-SUPAERO</p>
     </footer>
+    <script>
+      window.onscroll = function () {
+        let winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        let height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      };
+    </script>
   </body>
 </html>
