@@ -211,3 +211,27 @@ body {
         linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
 }
+
+/* Style de la barre de progression */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    z-index: 1000;
+}
+
+/* Style pour l'effet d'apparition fluide */
+.reveal {
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
