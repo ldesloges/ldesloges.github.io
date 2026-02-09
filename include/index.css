@@ -176,6 +176,51 @@ h2::after {
     border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
+/* --- SECTION COMPÉTENCES AMÉLIORÉE --- */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-group h3 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.skill-group h3 i {
+    color: var(--accent); /* Ton indigo #6366f1 */
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* On garde ton style de tag mais on l'affine */
+.tag {
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
 footer {
     text-align: center;
     padding: 60px 0;
