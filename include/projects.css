@@ -1,42 +1,111 @@
-/* --- NOUVELLE LISTE DE PROJETS --- */
+/* --- CONFIGURATION DES COULEURS (Identique à index.css) --- */
+:root {
+    --bg-color: #05070a;
+    --card-bg: #111827;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --border: #1e293b;
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER --- */
+header {
+    padding: 80px 0 40px;
+    text-align: center;
+    background: radial-gradient(circle at top, #1e1b4b 0%, transparent 70%);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* --- LISTE DES PROJETS (Mode Large avec Image) --- */
 .projects-list {
     display: flex;
     flex-direction: column;
-    gap: 60px; /* Grand espace entre les blocs de projets */
-    margin-top: 50px;
+    gap: 60px; /* Espace entre les projets */
+    padding: 40px 0;
 }
 
 .project-block {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50% image, 50% texte */
+    grid-template-columns: 1fr 1fr; /* Image à gauche, texte à droite */
     gap: 40px;
-    align-items: center;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 30px;
-    transition: transform 0.3s ease;
+    align-items: center;
+    transition: all 0.4s ease;
 }
 
 .project-block:hover {
+    transform: translateY(-5px);
     border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* --- GESTION DES IMAGES --- */
+/* --- IMAGES DES PROJETS --- */
 .project-image {
     width: 100%;
-    height: 250px;
-    border-radius: 12px;
+    height: 300px;
+    border-radius: 16px;
     overflow: hidden;
-    background: #000; /* Fond noir si l'image charge mal */
+    background: #000;
+    border: 1px solid var(--border);
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* L'image remplit le cadre sans être déformée */
+    object-fit: cover;
     opacity: 0.8;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 .project-block:hover .project-image img {
@@ -44,37 +113,83 @@
     transform: scale(1.05);
 }
 
-/* --- INFOS PROJET --- */
+/* --- TEXTE DES PROJETS --- */
 .project-category {
     font-size: 0.75rem;
     font-weight: 800;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     display: block;
 }
 
 .project-info h3 {
     font-size: 1.8rem;
     margin-bottom: 15px;
+    color: white;
 }
 
 .project-info p {
     color: var(--text-dim);
-    margin-bottom: 20px;
-    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 25px;
 }
 
-/* --- RESPONSIVE (Passage en colonne sur mobile) --- */
-@media (max-width: 800px) {
+/* --- TAGS & LIENS --- */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.project-tags span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.project-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.project-link:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* --- RESPONSIVE (Passage en colonne pour tablettes et mobiles) --- */
+@media (max-width: 900px) {
     .project-block {
-        grid-template-columns: 1fr; /* Image au-dessus du texte */
-        gap: 20px;
+        grid-template-columns: 1fr; /* On empile image et texte */
         padding: 20px;
+        gap: 25px;
     }
     
     .project-image {
-        height: 200px;
+        height: 220px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
     }
 }
