@@ -1,13 +1,48 @@
-/* --- PHOTO DE PROFIL --- */
+:root {
+    --bg-color: #05070a;
+    --card-bg: #111827;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --border: #1e293b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER & PHOTO --- */
+header {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: radial-gradient(circle at top, #1e1b4b 0%, transparent 70%);
+}
+
 .profile-pic {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 20px;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 25px;
     border-radius: 50%;
     border: 3px solid var(--accent);
     padding: 5px;
     background: var(--bg-color);
-    box-shadow: 0 0 20px var(--accent-glow);
+    box-shadow: 0 0 25px var(--accent-glow);
 }
 
 .profile-pic img {
@@ -17,24 +52,100 @@
     border-radius: 50%;
 }
 
-/* --- LOGOS EXPÉRIENCES --- */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-download {
+    background: var(--accent);
+    color: white !important;
+}
+
+/* --- SECTIONS & CARTES --- */
+section { margin: 80px 0; }
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.card:hover { border-color: var(--accent); }
+
+/* --- STYLE LOGOS EXP --- */
 .experience-item {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     align-items: flex-start;
 }
 
 .exp-logo {
-    min-width: 60px;
-    width: 60px;
-    height: 60px;
-    background: #fff; /* Fond blanc souvent mieux pour les logos d'entreprises */
-    border-radius: 12px;
-    padding: 5px;
+    min-width: 65px;
+    width: 65px;
+    height: 65px;
+    background: white;
+    border-radius: 14px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 .exp-logo img {
@@ -43,16 +154,37 @@
     object-fit: contain;
 }
 
-.exp-content {
-    flex: 1;
+.exp-content h3 { color: white; margin-bottom: 5px; }
+
+.date {
+    display: block;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
-/* --- AJUSTEMENT MOBILE --- */
+/* --- SKILLS --- */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    padding: 7px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
 @media (max-width: 600px) {
-    .experience-item {
-        flex-direction: column;
-    }
-    .exp-logo {
-        margin-bottom: 10px;
-    }
+    .experience-item { flex-direction: column; }
+    h1 { font-size: 2.5rem; }
 }
