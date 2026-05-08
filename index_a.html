@@ -405,58 +405,55 @@
         }
       }
     </script>
-
     <script type="py">
-      import asyncio
-      import datetime
-      from js import document
-      from pyscript import display, when
+    import asyncio
+    import datetime
+    from js import document
+    from pyscript import display, when
 
-      # --- 1. HORLOGE ---
-      async def update_time():
-          while True:
-              try:
-                  now = datetime.datetime.now().strftime("%H:%M:%S")
-                  display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
-              except:
-                  pass
-              await asyncio.sleep(1)
+    # --- 1. HORLOGE ---
+    async def update_time():
+        while True:
+            try:
+                now = datetime.datetime.now().strftime("%H:%M:%S")
+                display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+            except:
+                pass
+            await asyncio.sleep(1)
 
-      asyncio.ensure_future(update_time())
+    asyncio.ensure_future(update_time())
 
-      # --- 2. CHATBOT ---
-      responses = {
-          "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
-          "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
-          "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
-          "hello": "Hi there! How can I help you discover Lény's profile?",
-          "salut": "Salut ! Pose-moi une question sur Claas, l'ISAE ou mes marathons."
-      }
+    # --- 2. CHATBOT ---
+    responses = {
+        "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
+        "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
+        "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
+        "hello": "Hi there! How can I help you discover Lény's profile?",
+        "salut": "Salut ! Pose-moi une question sur Claas, l'ISAE ou mes marathons."
+    }
 
-      @when("click", "#send-btn")
-      def handle_message(event):
-          input_box = document.getElementById("chat-input")
-          user_text = input_box.value.lower().strip()
+    @when("click", "#send-btn")
+    def handle_message(event):
+        input_box = document.getElementById("chat-input")
+        user_text = input_box.value.lower().strip()
 
-          if user_text:
-              # Affichage message utilisateur
-              display(f"<div style='margin-bottom:5px;'><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
+        if user_text:
+            # Affichage message utilisateur
+            display(f"<div style='margin-bottom:5px;'><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
 
-              # Réponse du bot
-              reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
-              display(f"<div style='margin-bottom:10px; color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
+            # Réponse du bot
+            reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
+            display(f"<div style='margin-bottom:10px; color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
 
-              # Reset input
-              input_box.value = ""
+            # Reset input et scroll
+            input_box.value = ""
+            chat_box = document.getElementById("chat-box")
+            chat_box.scrollTop = chat_box.scrollHeight
 
-              # Scroll automatique vers le bas
-              chat_box = document.getElementById("chat-box")
-              chat_box.scrollTop = chat_box.scrollHeight
-
-      @when("keydown", "#chat-input")
-      def handle_keypress(event):
-          if event.keyCode == 13: # Touche Entrée
-              handle_message(event)
+    @when("keydown", "#chat-input")
+    def handle_keypress(event):
+        if event.keyCode == 13: # Touche Entrée
+            handle_message(None)
     </script>
   </body>
 </html>
