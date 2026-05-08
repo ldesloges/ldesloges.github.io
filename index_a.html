@@ -438,21 +438,25 @@
         user_text = input_box.value.lower().strip()
 
         if user_text:
-            # Affichage message utilisateur
-            display(f"<div style='margin-bottom:5px;'><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
+            # Affichage message utilisateur (gras activé)
+            display(f"<div><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
 
             # Réponse du bot
             reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
-            display(f"<div style='margin-bottom:10px; color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
+            display(f"<div style='color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
 
-            # Reset input et scroll
+            # Reset input
             input_box.value = ""
+
+            # Scroll automatique
             chat_box = document.getElementById("chat-box")
             chat_box.scrollTop = chat_box.scrollHeight
 
+    # --- 3. GESTION DE LA TOUCHE ENTRÉE ---
     @when("keydown", "#chat-input")
     def handle_keypress(event):
-        if event.keyCode == 13: # Touche Entrée
+        # Le code 13 correspond à la touche "Entrée"
+        if event.keyCode == 13:
             handle_message(None)
     </script>
   </body>
