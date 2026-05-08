@@ -24,8 +24,6 @@
     ></script>
   </head>
 
-
-
   <body>
     <div
       id="pyscript-clock"
@@ -217,19 +215,6 @@
     </main>
 
     <!-- C'est ici que le message va apparaître -->
-    <div id="affichage">loading...</div>
-
-    <script type="py">
-      # On importe l'outil qui permet de manipuler le HTML
-      from pyscript import display
-      import datetime
-
-      maintenant = datetime.datetime.now().strftime("%H:%M:%S")
-      message = f"It's {maintenant} "
-
-      # On affiche le message dans l'élément qui a l'ID "affichage"
-      display(message, target="affichage", append=False)
-    </script>
 
     <footer>
       <p>&copy; 2026 Leny Desloges - Built with passion</p>
@@ -301,6 +286,5 @@
       # On lance la tâche en arrière-plan
       asyncio.ensure_future(update_time())
     </script>
-
   </body>
 </html>
