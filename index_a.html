@@ -213,6 +213,39 @@
         </div>
       </section>
     </main>
+    <div
+      id="chat-container"
+      class="card"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        z-index: 2000;
+      "
+    >
+      <div
+        id="chat-box"
+        style="
+          height: 200px;
+          overflow-y: auto;
+          font-size: 14px;
+          margin-bottom: 10px;
+        "
+      >
+        <p>
+          <strong>Lény-Bot:</strong> Hi! Ask me about my internships or my
+          hobbies.
+        </p>
+      </div>
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Type 'Claas' or 'Run'..."
+        style="width: 80%"
+      />
+      <button id="send-btn">ok</button>
+    </div>
 
     <!-- C'est ici que le message va apparaître -->
 
@@ -271,20 +304,47 @@
     </script>
 
     <script type="py">
-      import asyncio
-      import datetime
-      from pyscript import display
+            import asyncio
+            import datetime
+            from pyscript import display
 
-      async def update_time():
-          while True:
-              # Format anglais : Hour:Minute:Second
-              now = datetime.datetime.now().strftime("%H:%M:%S")
-              display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
-              # Attend 1 seconde avant de recommencer
-              await asyncio.sleep(1)
+            async def update_time():
+                while True:
+                    # Format anglais : Hour:Minute:Second
+                    now = datetime.datetime.now().strftime("%H:%M:%S")
+                    display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+                    # Attend 1 seconde avant de recommencer
+                    await asyncio.sleep(1)
 
-      # On lance la tâche en arrière-plan
-      asyncio.ensure_future(update_time())
+            # On lance la tâche en arrière-plan
+            asyncio.ensure_future(update_time())
+
+            from pyscript import display, when
+
+      # Dictionnaire de réponses
+      responses = {
+          "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
+          "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
+          "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
+          "hello": "Hi there! How can I help you discover Lény's profile?"
+      }
+
+      @when("click", "#send-btn")
+      def handle_message(event):
+          input_box = document.getElementById("chat-input")
+          user_text = input_box.value.lower()
+
+          # On affiche le message de l'utilisateur
+          display(f"<b>You:</b> {user_text}", target="chat-box", append=True)
+
+          # Logique de réponse
+          reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
+
+          # On affiche la réponse du bot
+          display(f"<b>Lény-Bot:</b> {reply}", target="chat-box", append=True)
+
+          # On vide l'input
+          input_box.value = ""
     </script>
   </body>
 </html>
