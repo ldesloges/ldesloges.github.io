@@ -196,13 +196,11 @@
     </main>
     
     
-<body>
 
-    <h1>Mon Portfolio Python</h1>
-    <p>Ce message ci-dessous est généré par un script Python :</p>
+
 
     <!-- C'est ici que le message va apparaître -->
-    <div id="affichage">Chargement du script...</div>
+    <div id="affichage">loading...</div>
 
     <script type="py">
         # On importe l'outil qui permet de manipuler le HTML
@@ -210,13 +208,13 @@
         import datetime
 
         maintenant = datetime.datetime.now().strftime("%H:%M:%S")
-        message = f"🐍 Python dit : Il est {maintenant} et le script tourne en direct !"
+        message = f"It's {maintenant} "
         
         # On affiche le message dans l'élément qui a l'ID "affichage"
         display(message, target="affichage", append=False)
     </script>
 
-</body>
+
 
 
     <footer>

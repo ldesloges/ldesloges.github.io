@@ -14,6 +14,24 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+
+
+<style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        #affichage { 
+            color: #2ecc71; 
+            font-weight: bold; 
+            font-size: 24px; 
+            border: 2px dashed #2ecc71; 
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+
+
   </head>
   <body>
     <div id="scroll-progress"></div>
@@ -182,6 +200,19 @@
         </div>
       </section>
     </main>
+    <div id="affichage">loading...</div>
+
+    <script type="py">
+        # On importe l'outil qui permet de manipuler le HTML
+        from pyscript import display
+        import datetime
+
+        maintenant = datetime.datetime.now().strftime("%H:%M:%S")
+        message = f"It's {maintenant} "
+        
+        # On affiche le message dans l'élément qui a l'ID "affichage"
+        display(message, target="affichage", append=False)
+    </script>
 
     <footer>
       <p>&copy; 2026 Leny Desloges - Codé avec passion</p>
