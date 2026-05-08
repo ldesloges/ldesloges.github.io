@@ -176,6 +176,46 @@
         </div>
       </section>
     </main>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- On charge PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        #affichage { 
+            color: #2ecc71; 
+            font-weight: bold; 
+            font-size: 24px; 
+            border: 2px dashed #2ecc71; 
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mon Portfolio Python</h1>
+    <p>Ce message ci-dessous est généré par un script Python :</p>
+
+    <!-- C'est ici que le message va apparaître -->
+    <div id="affichage">Chargement du script...</div>
+
+    <script type="py">
+        # On importe l'outil qui permet de manipuler le HTML
+        from pyscript import display
+        import datetime
+
+        maintenant = datetime.datetime.now().strftime("%H:%M:%S")
+        message = f"🐍 Python dit : Il est {maintenant} et le script tourne en direct !"
+        
+        # On affiche le message dans l'élément qui a l'ID "affichage"
+        display(message, target="affichage", append=False)
+    </script>
+
+</body>
+</html>
 
     <footer>
       <p>&copy; 2026 Leny Desloges - Built with passion</p>
