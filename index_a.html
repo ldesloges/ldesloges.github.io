@@ -213,20 +213,45 @@
         </div>
       </section>
     </main>
+    <!-- Bouton flottant pour ouvrir le chat -->
+    <div
+      id="chat-launcher"
+      onclick="toggleChat()"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #2ecc71;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        z-index: 2001;
+        transition: transform 0.3s;
+      "
+    >
+      <i class="fas fa-robot" style="color: white; font-size: 24px"></i>
+    </div>
+
+    <!-- La Chatbox (cachée par défaut avec display: none) -->
     <div
       id="chat-container"
       class="card"
       style="
         position: fixed;
-        bottom: 20px;
+        bottom: 90px;
         right: 20px;
-        width: 280px;
+        width: 300px;
         z-index: 2000;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        display: none;
+        flex-direction: column;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         border: 1px solid #2ecc71;
         background: #1a1a1a;
-        display: flex;
-        flex-direction: column;
       "
     >
       <div
@@ -236,11 +261,18 @@
           padding: 10px;
           font-weight: bold;
           border-radius: 8px 8px 0 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         "
       >
-        <i class="fas fa-robot"></i> Lény-Bot
+        <span><i class="fas fa-robot"></i> Lény-Bot</span>
+        <i
+          class="fas fa-times"
+          onclick="toggleChat()"
+          style="cursor: pointer"
+        ></i>
       </div>
-
       <div
         id="chat-box"
         style="
@@ -252,6 +284,7 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
+          scroll-behavior: smooth;
         "
       >
         <p
@@ -263,10 +296,9 @@
             border-left: 3px solid #2ecc71;
           "
         >
-          <strong>Lény-Bot:</strong> Hi! Ask me about Claas, ISAE, or my runs.
+          <strong>Lény-Bot:</strong> Hi! Need help with my CV?
         </p>
       </div>
-
       <div
         style="
           padding: 10px;
@@ -278,7 +310,7 @@
         <input
           type="text"
           id="chat-input"
-          placeholder="Ask me something..."
+          placeholder="Ask me..."
           style="
             flex-grow: 1;
             background: #222;
@@ -358,59 +390,73 @@
           behavior: "smooth",
         });
       };
+      function toggleChat() {
+        const chat = document.getElementById("chat-container");
+        const launcher = document.getElementById("chat-launcher");
+
+        if (chat.style.display === "none" || chat.style.display === "") {
+          chat.style.display = "flex";
+          launcher.style.transform = "scale(0.8) rotate(90deg)";
+          launcher.style.background = "#e74c3c"; // Devient rouge pour fermer
+        } else {
+          chat.style.display = "none";
+          launcher.style.transform = "scale(1) rotate(0deg)";
+          launcher.style.background = "#2ecc71";
+        }
+      }
     </script>
 
     <script type="py">
-    import asyncio
-    import datetime
-    from js import document
-    from pyscript import display, when
+      import asyncio
+      import datetime
+      from js import document
+      from pyscript import display, when
 
-    # --- 1. HORLOGE ---
-    async def update_time():
-        while True:
-            try:
-                now = datetime.datetime.now().strftime("%H:%M:%S")
-                display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
-            except:
-                pass
-            await asyncio.sleep(1)
+      # --- 1. HORLOGE ---
+      async def update_time():
+          while True:
+              try:
+                  now = datetime.datetime.now().strftime("%H:%M:%S")
+                  display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+              except:
+                  pass
+              await asyncio.sleep(1)
 
-    asyncio.ensure_future(update_time())
+      asyncio.ensure_future(update_time())
 
-    # --- 2. CHATBOT ---
-    responses = {
-        "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
-        "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
-        "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
-        "hello": "Hi there! How can I help you discover Lény's profile?",
-        "salut": "Salut ! Pose-moi une question sur Claas, l'ISAE ou mes marathons."
-    }
+      # --- 2. CHATBOT ---
+      responses = {
+          "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
+          "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
+          "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
+          "hello": "Hi there! How can I help you discover Lény's profile?",
+          "salut": "Salut ! Pose-moi une question sur Claas, l'ISAE ou mes marathons."
+      }
 
-    @when("click", "#send-btn")
-    def handle_message(event):
-        input_box = document.getElementById("chat-input")
-        user_text = input_box.value.lower().strip()
-        
-        if user_text:
-            # Affichage message utilisateur
-            display(f"<div style='margin-bottom:5px;'><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
-            
-            # Réponse du bot
-            reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
-            display(f"<div style='margin-bottom:10px; color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
-            
-            # Reset input
-            input_box.value = ""
-            
-            # Scroll automatique vers le bas
-            chat_box = document.getElementById("chat-box")
-            chat_box.scrollTop = chat_box.scrollHeight
+      @when("click", "#send-btn")
+      def handle_message(event):
+          input_box = document.getElementById("chat-input")
+          user_text = input_box.value.lower().strip()
 
-    @when("keydown", "#chat-input")
-    def handle_keypress(event):
-        if event.keyCode == 13: # Touche Entrée
-            handle_message(event)
-</script>
+          if user_text:
+              # Affichage message utilisateur
+              display(f"<div style='margin-bottom:5px;'><b>You:</b> {user_text}</div>", target="chat-box", append=True, html=True)
+
+              # Réponse du bot
+              reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
+              display(f"<div style='margin-bottom:10px; color:#2ecc71;'><b>Lény-Bot:</b> {reply}</div>", target="chat-box", append=True, html=True)
+
+              # Reset input
+              input_box.value = ""
+
+              # Scroll automatique vers le bas
+              chat_box = document.getElementById("chat-box")
+              chat_box.scrollTop = chat_box.scrollHeight
+
+      @when("keydown", "#chat-input")
+      def handle_keypress(event):
+          if event.keyCode == 13: # Touche Entrée
+              handle_message(event)
+    </script>
   </body>
 </html>
