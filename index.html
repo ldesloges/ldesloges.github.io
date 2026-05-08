@@ -14,26 +14,50 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pyscript.net/releases/2024.1.1/core.css"
+    />
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2024.1.1/core.js"
+    ></script>
 
-
-
-<style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        #affichage { 
-            color: #2ecc71; 
-            font-weight: bold; 
-            font-size: 24px; 
-            border: 2px dashed #2ecc71; 
-            padding: 20px;
-            margin-top: 20px;
-        }
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      #affichage {
+        color: #2ecc71;
+        font-weight: bold;
+        font-size: 24px;
+        border: 2px dashed #2ecc71;
+        padding: 20px;
+        margin-top: 20px;
+      }
     </style>
-
-
   </head>
   <body>
+    <div
+      id="pyscript-clock"
+      style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        font-family: &quot;Inter&quot;, sans-serif;
+        font-size: 14px;
+        color: #2ecc71;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+        backdrop-filter: blur(5px);
+      "
+    >
+      Loading time...
+    </div>
     <div id="scroll-progress"></div>
 
     <header>
@@ -81,7 +105,6 @@
       <section id="experience">
         <h2>Expériences</h2>
 
-
         <div class="card experience-item reveal">
           <div class="exp-logo">
             <img src="include/claas-Photoroom.png" alt="Logo Claas" />
@@ -90,13 +113,16 @@
             <h3>Data Scientist (Claas)</h3>
             <span class="date">Mars 2026 - En cours | Woippy, France</span>
             <p>
-              •Extraction de données : Gestion de données capteurs à haute fréquence provenant de presses à balles, aux formats TDM et MF4.
-
-•Analyses avancées : Développement de scripts de nettoyage et de « colonnes intelligentes » via Python et DIAdem pour générer des indicateurs de performance (KPI) pertinents.
-
-•Traitement Cloud : Utilisation de Databricks pour automatiser le traitement des données et garantir la fiabilité des pipelines.
-
-•Business Intelligence : Conception d’un tableau de bord Tableau automatisé pour offrir aux ingénieurs des perspectives exploitables sur le comportement des machines.
+              •Extraction de données : Gestion de données capteurs à haute
+              fréquence provenant de presses à balles, aux formats TDM et MF4.
+              •Analyses avancées : Développement de scripts de nettoyage et de «
+              colonnes intelligentes » via Python et DIAdem pour générer des
+              indicateurs de performance (KPI) pertinents. •Traitement Cloud :
+              Utilisation de Databricks pour automatiser le traitement des
+              données et garantir la fiabilité des pipelines. •Business
+              Intelligence : Conception d’un tableau de bord Tableau automatisé
+              pour offrir aux ingénieurs des perspectives exploitables sur le
+              comportement des machines.
             </p>
           </div>
         </div>
@@ -202,18 +228,6 @@
     </main>
     <div id="affichage">loading...</div>
 
-    <script type="py">
-        # On importe l'outil qui permet de manipuler le HTML
-        from pyscript import display
-        import datetime
-
-        maintenant = datetime.datetime.now().strftime("%H:%M:%S")
-        message = f"It's {maintenant} "
-        
-        # On affiche le message dans l'élément qui a l'ID "affichage"
-        display(message, target="affichage", append=False)
-    </script>
-
     <footer>
       <p>&copy; 2026 Leny Desloges - Codé avec passion</p>
     </footer>
@@ -282,5 +296,23 @@
         });
       };
     </script>
+
+    <script type="py">
+      import asyncio
+      import datetime
+      from pyscript import display
+
+      async def update_time():
+          while True:
+              # Format anglais : Hour:Minute:Second
+              now = datetime.datetime.now().strftime("%H:%M:%S")
+              display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+              # Attend 1 seconde avant de recommencer
+              await asyncio.sleep(1)
+
+      # On lance la tâche en arrière-plan
+      asyncio.ensure_future(update_time())
+    </script>
+    
   </body>
 </html>
