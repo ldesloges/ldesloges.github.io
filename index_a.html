@@ -14,26 +14,37 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pyscript.net/releases/2024.1.1/core.css"
+    />
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2024.1.1/core.js"
+    ></script>
   </head>
-
-
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        #affichage { 
-            color: #2ecc71; 
-            font-weight: bold; 
-            font-size: 24px; 
-            border: 2px dashed #2ecc71; 
-            padding: 20px;
-            margin-top: 20px;
-        }
-    </style>
 
 
 
   <body>
+    <div
+      id="pyscript-clock"
+      style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        font-family: &quot;Inter&quot;, sans-serif;
+        font-size: 14px;
+        color: #2ecc71;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+        backdrop-filter: blur(5px);
+      "
+    >
+      Loading time...
+    </div>
     <div id="scroll-progress"></div>
 
     <header>
@@ -58,7 +69,10 @@
             >LinkedIn</a
           >
           <a href="projects_a.html" class="project-class">My Projects</a>
-          <a href="include/Resume_Lény_DESLOGES_English.pdf" download class="btn-download"
+          <a
+            href="include/Resume_Lény_DESLOGES_English.pdf"
+            download
+            class="btn-download"
             >Download CV</a
           >
           <a href="index.html">🇫🇷</a>
@@ -70,10 +84,12 @@
       <section id="about" class="reveal">
         <h2>About Me</h2>
         <p>
-          Future engineer passionate about the intersection of mechanical engineering and 
-          <strong>Data Science</strong>. From championship simulations (Monte Carlo) to web development, 
-          I enjoy turning data into elegant decision-making tools. As a marathon runner and 
-          skydiver, I cultivate rigor and a drive for challenges.
+          Future engineer passionate about the intersection of mechanical
+          engineering and
+          <strong>Data Science</strong>. From championship simulations (Monte
+          Carlo) to web development, I enjoy turning data into elegant
+          decision-making tools. As a marathon runner and skydiver, I cultivate
+          rigor and a drive for challenges.
         </p>
       </section>
 
@@ -88,10 +104,13 @@
             <h3>Data Scientist (Claas)</h3>
             <span class="date">March 2026 - ... | Woippy, France</span>
             <p>
-              • Data Extraction: Handling high-frequency sensor data from balers in TDM and MF4 formats.
-• Advanced Analytics: Developing cleaning scripts and "smart columns" using Python and DIAdem to generate meaningful KPIs.
-• Cloud Processing: Leveraging Databricks to automate data processing and ensure pipeline reliability.
-• Business Intelligence: Designing an automated Tableau dashboard to provide engineers with actionable insights into machine behavior.
+              • Data Extraction: Handling high-frequency sensor data from balers
+              in TDM and MF4 formats. • Advanced Analytics: Developing cleaning
+              scripts and "smart columns" using Python and DIAdem to generate
+              meaningful KPIs. • Cloud Processing: Leveraging Databricks to
+              automate data processing and ensure pipeline reliability. •
+              Business Intelligence: Designing an automated Tableau dashboard to
+              provide engineers with actionable insights into machine behavior.
             </p>
           </div>
         </div>
@@ -104,8 +123,9 @@
             <h3>Mathematics Tutor</h3>
             <span class="date">2024 - Present | Toulouse, France</span>
             <p>
-              Developing customized educational materials for high school seniors. 
-              Simplifying complex technical concepts for better student engagement.
+              Developing customized educational materials for high school
+              seniors. Simplifying complex technical concepts for better student
+              engagement.
             </p>
           </div>
         </div>
@@ -118,7 +138,7 @@
             <h3>Logistics & Stock Associate (Super U)</h3>
             <span class="date">2025 Season | Chissay-en-Touraine, France</span>
             <p>
-              Order management and inventory optimization (Produce department). 
+              Order management and inventory optimization (Produce department).
               Implementation of rigorous logistics processes.
             </p>
           </div>
@@ -132,8 +152,9 @@
             <h3>Head Pizza Chef (Kelly's Resort Hotel)</h3>
             <span class="date">2022 Season | Rosslare, Ireland 🇮🇪</span>
             <p>
-              Autonomous management of the pizza station in a prestigious establishment. 
-              Full immersion in an international environment (Fluent English).
+              Autonomous management of the pizza station in a prestigious
+              establishment. Full immersion in an international environment
+              (Fluent English).
             </p>
           </div>
         </div>
@@ -146,8 +167,8 @@
             <h3>Vineyard Worker & Tractor Operator (Domaine Desloges)</h3>
             <span class="date">2019 - Present | Monthou-sur-Cher, France</span>
             <p>
-              Operating agricultural machinery and assisting with winemaking processes. 
-              Customer relations and wine tastings.
+              Operating agricultural machinery and assisting with winemaking
+              processes. Customer relations and wine tastings.
             </p>
           </div>
         </div>
@@ -194,28 +215,21 @@
         </div>
       </section>
     </main>
-    
-    
-
-
 
     <!-- C'est ici que le message va apparaître -->
     <div id="affichage">loading...</div>
 
     <script type="py">
-        # On importe l'outil qui permet de manipuler le HTML
-        from pyscript import display
-        import datetime
+      # On importe l'outil qui permet de manipuler le HTML
+      from pyscript import display
+      import datetime
 
-        maintenant = datetime.datetime.now().strftime("%H:%M:%S")
-        message = f"It's {maintenant} "
-        
-        # On affiche le message dans l'élément qui a l'ID "affichage"
-        display(message, target="affichage", append=False)
+      maintenant = datetime.datetime.now().strftime("%H:%M:%S")
+      message = f"It's {maintenant} "
+
+      # On affiche le message dans l'élément qui a l'ID "affichage"
+      display(message, target="affichage", append=False)
     </script>
-
-
-
 
     <footer>
       <p>&copy; 2026 Leny Desloges - Built with passion</p>
@@ -235,14 +249,14 @@
         let scrolled = (winScroll / height) * 100;
         let progBar = document.getElementById("scroll-progress");
         if (progBar) progBar.style.width = scrolled + "%";
-        
+
         // Back to top button visibility
         if (winScroll > 300) {
           backToTopButton.style.display = "block";
         } else {
           backToTopButton.style.display = "none";
         }
-        
+
         reveal();
       };
 
@@ -270,5 +284,23 @@
         });
       };
     </script>
+
+    <script type="py">
+      import asyncio
+      import datetime
+      from pyscript import display
+
+      async def update_time():
+          while True:
+              # Format anglais : Hour:Minute:Second
+              now = datetime.datetime.now().strftime("%H:%M:%S")
+              display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+              # Attend 1 seconde avant de recommencer
+              await asyncio.sleep(1)
+
+      # On lance la tâche en arrière-plan
+      asyncio.ensure_future(update_time())
+    </script>
+
   </body>
 </html>
