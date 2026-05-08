@@ -292,7 +292,7 @@
           while True:
               # Format anglais : Hour:Minute:Second
               now = datetime.datetime.now().strftime("%H:%M:%S")
-              display(f"LIVE TIME: {now}", target="pyscript-clock", append=False)
+              display(f"Temps en direct: {now}", target="pyscript-clock", append=False)
               # Attend 1 seconde avant de recommencer
               await asyncio.sleep(1)
 
