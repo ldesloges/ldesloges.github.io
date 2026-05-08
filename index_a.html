@@ -378,30 +378,30 @@
 
             from pyscript import display, when
 
-      # Dictionnaire de réponses
-      responses = {
-          "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
-          "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
-          "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
-          "hello": "Hi there! How can I help you discover Lény's profile?"
-      }
+            # Dictionnaire de réponses
+            responses = {
+                "claas": "At Claas, I work as a Data Scientist on baler sensor data. It's all about TDM/MF4 files!",
+                "run": "I'm a marathon runner! I love challenges that require endurance and rigor.",
+                "isae": "I'm a student at ISAE-SUPAERO, focusing on mechanical engineering and data science.",
+                "hello": "Hi there! How can I help you discover Lény's profile?"
+            }
 
-      @when("click", "#send-btn")
-      def handle_message(event):
-          input_box = document.getElementById("chat-input")
-          user_text = input_box.value.lower()
+            @when("click", "#send-btn")
+            def handle_message(event):
+                input_box = document.getElementById("chat-input")
+                user_text = input_box.value.lower()
 
-          # On affiche le message de l'utilisateur
-          display(f"<b>You:</b> {user_text}", target="chat-box", append=True)
+                # On affiche le message de l'utilisateur
+                display(f"<b>You:</b> {user_text}", target="chat-box", append=True)
 
-          # Logique de réponse
-          reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
+                # Logique de réponse
+                reply = responses.get(user_text, "I'm not sure about that. Try 'Claas', 'ISAE' or 'Run'!")
 
-          # On affiche la réponse du bot
-          display(f"<b>Lény-Bot:</b> {reply}", target="chat-box", append=True)
+                # On affiche la réponse du bot
+                display(f"<b>Lény-Bot:</b> {reply}", target="chat-box", append=True)
 
-          # On vide l'input
-          input_box.value = ""
+                # On vide l'input
+                input_box.value = ""
     </script>
   </body>
 </html>
